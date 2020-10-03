@@ -32,6 +32,9 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_titleFragment_to_newQuestionFragment"
+            app:destination="@id/newQuestionFragment" />
     </fragment>
     <fragment
         android:id="@+id/gameFragment"
@@ -102,4 +105,13 @@
         android:name="com.example.android.navigation.AboutFragment"
         android:label="@string/title_about_trivia"
         tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/newQuestionFragment"
+        android:name="com.example.android.navigation.newQuestion.NewQuestionFragment"
+        android:label="fragment_new_question"
+        tools:layout="@layout/fragment_new_question" >
+        <action
+            android:id="@+id/action_newQuestionFragment_to_titleFragment"
+            app:destination="@id/titleFragment" />
+    </fragment>
 </navigation>
