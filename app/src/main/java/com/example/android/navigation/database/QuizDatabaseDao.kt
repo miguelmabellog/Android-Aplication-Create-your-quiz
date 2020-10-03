@@ -70,5 +70,6 @@ interface QuizDatabaseDao {
     @Query("SELECT * FROM quiestion_and_answers_table ORDER BY questionId DESC LIMIT 1")
     suspend fun getTonight(): QuizTable?
 
+
 }
 
