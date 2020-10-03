@@ -20,17 +20,23 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "daily_sleep_quality_table")
+@Entity(tableName = "quiestion_and_answers_table")
 data class QuizTable(
         @PrimaryKey(autoGenerate = true)
-        var nightId: Long = 0L,
+        var questionId: Long = 0L,
 
-        @ColumnInfo(name = "start_time_milli")
-        val startTimeMilli: Long = System.currentTimeMillis(),
+        @ColumnInfo(name = "question_sentences")
+        var questionSentence: String="Question sentences",
 
-        @ColumnInfo(name = "end_time_milli")
-        var endTimeMilli: Long = startTimeMilli,
+        @ColumnInfo(name = "correct_answer")
+        var correctanswer: String="Correct answer",
 
-        @ColumnInfo(name = "quality_rating")
-        var sleepQuality: Int = -1
+        @ColumnInfo(name = "wrong_answer_one")
+        var wronganswerone: String="wrong answer one",
+
+        @ColumnInfo(name = "wrong_answer_two")
+        var wronganswertwo: String="wrong answer two",
+
+        @ColumnInfo(name = "wrong_answer_three")
+        var wronganswerthree: String="wrong answer three"
 )

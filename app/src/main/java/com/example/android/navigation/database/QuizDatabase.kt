@@ -85,7 +85,7 @@ abstract class QuizDatabase : RoomDatabase() {
                     instance = Room.databaseBuilder(
                             context.applicationContext,
                             QuizDatabase::class.java,
-                            "sleep_history_database"
+                            "all_question_database"
                     )
                             // Wipes and rebuilds instead of migrating if no Migration object.
                             // Migration is not part of this lesson. You can learn more about

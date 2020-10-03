@@ -45,7 +45,7 @@ interface QuizDatabaseDao {
      *
      * @param key startTimeMilli to match
      */
-    @Query("SELECT * from daily_sleep_quality_table WHERE nightId = :key")
+    @Query("SELECT * from quiestion_and_answers_table WHERE questionId = :key")
     suspend fun get(key: Long): QuizTable?
 
     /**
@@ -53,7 +53,7 @@ interface QuizDatabaseDao {
      *
      * This does not delete the table, only its contents.
      */
-    @Query("DELETE FROM daily_sleep_quality_table")
+    @Query("DELETE FROM quiestion_and_answers_table")
     suspend fun clear()
 
     /**
@@ -61,13 +61,13 @@ interface QuizDatabaseDao {
      *
      * sorted by start time in descending order.
      */
-    @Query("SELECT * FROM daily_sleep_quality_table ORDER BY nightId DESC")
+    @Query("SELECT * FROM quiestion_and_answers_table ORDER BY questionId DESC")
     fun getAllNights(): LiveData<List<QuizTable>>
 
     /**
      * Selects and returns the latest night.
      */
-    @Query("SELECT * FROM daily_sleep_quality_table ORDER BY nightId DESC LIMIT 1")
+    @Query("SELECT * FROM quiestion_and_answers_table ORDER BY questionId DESC LIMIT 1")
     suspend fun getTonight(): QuizTable?
 
 }
