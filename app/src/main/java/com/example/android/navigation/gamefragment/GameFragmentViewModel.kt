@@ -78,8 +78,8 @@ class GameFragmentViewModel(
             // not the lambda.
             val oldNight = tonight.value ?: return@launch
 
-            // Update the night in the database to add the end time.
-            oldNight.endTimeMilli = System.currentTimeMillis()
+            // Update the night in the d atabase to add the end time.
+            //oldNight.endTimeMilli = System.currentTimeMillis()
 
             update(oldNight)
 

@@ -2,6 +2,7 @@ package com.example.android.navigation.newQuestion
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.android.navigation.database.QuizDatabaseDao
@@ -19,6 +20,8 @@ class NewQuestionViewModel (
     }
 
 
+
+
     fun setQuestion( sentenceQuestion:String, correctanswer:String,
                      wronganswerone:String, wronganswertwo:String, wronganswerthree:String) {
         viewModelScope.launch {
@@ -26,13 +29,15 @@ class NewQuestionViewModel (
             // and insert it into the database.
             val newQuestion = QuizTable(questionSentence = sentenceQuestion,correctanswer = correctanswer,
                     wronganswerone = wronganswerone,wronganswertwo = wronganswertwo,wronganswerthree = wronganswerthree)
-
             insert(newQuestion)
-
-
         }
     }
 
+    val navigateToTitle: LiveData<QuizTable>
+    get()=_navigateToTitle
+
+
+    private val _navigateToTitle = MutableLiveData<QuizTable>()
 
 
 
