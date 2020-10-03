@@ -35,7 +35,7 @@
     </fragment>
     <fragment
         android:id="@+id/gameFragment"
-        android:name="com.example.android.navigation.GameFragment"
+        android:name="com.example.android.navigation.gamefragment.GameFragment"
         android:label="@string/android_trivia"
         tools:layout="@layout/fragment_game">
         <action
