@@ -56,7 +56,7 @@ class NewQuestionFragment : Fragment() {
             v.findNavController().navigate(NewQuestionFragmentDirections.actionNewQuestionFragmentToTitleFragment())
         }
 
-        
+
 
 
 

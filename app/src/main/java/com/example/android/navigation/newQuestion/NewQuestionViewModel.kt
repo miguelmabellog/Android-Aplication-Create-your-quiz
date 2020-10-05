@@ -1,6 +1,7 @@
 package com.example.android.navigation.newQuestion
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -16,7 +17,9 @@ class NewQuestionViewModel (
 
 
     private suspend fun insert(question: QuizTable) {
+        Log.i("inseratar datos", database.getAllNights().value?.size.toString())
         database.insert(question)
+        Log.i("inseratar datos", database.getAllNights().value?.size.toString())
     }
 
 
@@ -25,11 +28,10 @@ class NewQuestionViewModel (
     fun setQuestion( sentenceQuestion:String, correctanswer:String,
                      wronganswerone:String, wronganswertwo:String, wronganswerthree:String) {
         viewModelScope.launch {
-            // Create a new night, which captures the current time,
-            // and insert it into the database.
             val newQuestion = QuizTable(questionSentence = sentenceQuestion,correctanswer = correctanswer,
                     wronganswerone = wronganswerone,wronganswertwo = wronganswertwo,wronganswerthree = wronganswerthree)
             insert(newQuestion)
+
         }
     }
 
