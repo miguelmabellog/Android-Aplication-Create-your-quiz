@@ -25,16 +25,10 @@ class GameFragmentViewModel(
     fun getQuestion() {
         Log.i("entra al init", "antes del scope")
         viewModelScope.launch {
+            val tonight = nights.value?.get(0)?.questionId?.let { database.get(it) } ?: return@launch
+            questionSentence=tonight.questionSentence
 
-            val tonight = nights.value?.get(0)?.questionId?.let {
-                database.get(it)
-
-            } ?: return@launch
-            questionSentence=tonight.questionId.toString()
-            /*nights[0]?.let {
-                val tonight = database.get(nights[0].questionId) ?: return@launch
-                questionSentence=tonight.questionSentence
-            }*/
+            // Setting this state variable to true will alert the observer and trigger navigation.
 
         }
         Log.i("all the nights", nights.value?.get(0).toString())

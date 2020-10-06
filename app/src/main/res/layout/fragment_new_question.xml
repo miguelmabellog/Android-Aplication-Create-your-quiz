@@ -22,7 +22,7 @@
     <data>
 
         <variable
-            name="newquestionviewmodel"
+            name="newQuestionViewModel"
             type="com.example.android.navigation.newQuestion.NewQuestionViewModel" />
     </data>
 
@@ -73,12 +73,10 @@
                 android:id="@+id/newsubmitButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/question_horizontal_margin"
-                android:layout_marginEnd="@dimen/question_horizontal_margin"
+                android:onClick="@{()->newQuestionViewModel.setQuestion()}"
                 android:text="@string/submit_button"
                 android:textSize="@dimen/button_text_size"
-                android:onClick="@{()->newquestionviewmodel.setQuestion()}"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/clear"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4" />
@@ -138,6 +136,19 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
+
+            <Button
+                android:id="@+id/clear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{()->newQuestionViewModel.onClear()}"
+                android:text="clear"
+                android:textSize="@dimen/button_text_size"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.503"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/newsubmitButton" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </layout>

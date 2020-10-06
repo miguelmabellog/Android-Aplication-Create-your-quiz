@@ -51,11 +51,23 @@ class NewQuestionViewModel (
             tonight.value = getTonightFromDatabase()
 
         }
-        Log.i("inseratar datos", nights.value?.size.toString())
+        Log.i("inseratar clear", nights.value?.size.toString())
     }
     private suspend fun insert(question: QuizTable) {
 
         database.insert(question)
+
+    }
+
+    private suspend fun clear() {
+        database.clear()
+    }
+    fun onClear() {
+
+        viewModelScope.launch {
+            clear()
+        }
+        Log.i("inseratar clear", nights.value?.size.toString())
 
     }
 

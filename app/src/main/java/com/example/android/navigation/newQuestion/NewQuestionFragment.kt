@@ -37,7 +37,7 @@ class NewQuestionFragment : Fragment() {
                 ViewModelProvider(
                         this, viewModelFactory).get(NewQuestionViewModel::class.java)
 
-        binding.newquestionviewmodel = newQuizViewModel
+        binding.newQuestionViewModel = newQuizViewModel
 
         // binding.setLifecycleOwner(this)
         binding.lifecycleOwner = this
