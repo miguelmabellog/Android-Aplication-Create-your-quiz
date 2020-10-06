@@ -19,12 +19,10 @@ package com.example.android.navigation.gamefragment
 import androidx.databinding.DataBindingUtil
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import androidx.appcompat.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import com.example.android.navigation.R
 import com.example.android.navigation.database.QuizDatabase
 import com.example.android.navigation.databinding.FragmentGameBinding
@@ -38,7 +36,7 @@ class GameFragment : Fragment() {
                 inflater, R.layout.fragment_game, container, false)
 
         val application = requireNotNull(this.activity).application
-        val dataSource = QuizDatabase.getInstance(application).sleepDatabaseDao
+        val dataSource = QuizDatabase.getInstance(application).quizDatabaseDao
         val viewModelFactory = GameFragmentViewModelFactory(dataSource, application)
 
         val GameViewModel =

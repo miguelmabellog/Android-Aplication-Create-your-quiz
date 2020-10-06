@@ -1,6 +1,7 @@
 package com.example.android.navigation.newQuestion
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -8,13 +9,9 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import com.example.android.navigation.R
-import com.example.android.navigation.TitleFragmentDirections
 import com.example.android.navigation.database.QuizDatabase
 import com.example.android.navigation.databinding.FragmentNewQuestionBinding
-import com.example.android.navigation.databinding.FragmentTitleBinding
 
 
 /**
@@ -32,7 +29,7 @@ class NewQuestionFragment : Fragment() {
 
         val application = requireNotNull(this.activity).application
 
-        val dataSource = QuizDatabase.getInstance(application).sleepDatabaseDao
+        val dataSource = QuizDatabase.getInstance(application).quizDatabaseDao
 
         val viewModelFactory = NewQuestionViewModelFactory(dataSource, application)
 
@@ -40,21 +37,18 @@ class NewQuestionFragment : Fragment() {
                 ViewModelProvider(
                         this, viewModelFactory).get(NewQuestionViewModel::class.java)
 
+        binding.newquestionviewmodel = newQuizViewModel
+
         // binding.setLifecycleOwner(this)
         binding.lifecycleOwner = this
 
-        binding.newquestionviewmodel = newQuizViewModel
 
+        newQuizViewModel.allnights().observe(viewLifecycleOwner, Observer {
+            if(it!=null){
+                Log.i("observador","la base no es nula")
+            }
+        })
 
-        binding.newsubmitButton.setOnClickListener {v:View->
-
-
-            newQuizViewModel.setQuestion(binding.newquestionText.text.toString(),
-            binding.editTextTextPersonName.text.toString(),binding.editTextTextPersonName2.text.toString(),
-            binding.editTextTextPersonName3.text.toString(), binding.editTextTextPersonName4.text.toString())
-
-            v.findNavController().navigate(NewQuestionFragmentDirections.actionNewQuestionFragmentToTitleFragment())
-        }
 
 
 

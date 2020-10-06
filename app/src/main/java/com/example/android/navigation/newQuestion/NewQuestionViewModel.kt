@@ -14,32 +14,52 @@ class NewQuestionViewModel (
         val database: QuizDatabaseDao,
         application: Application) : AndroidViewModel(application) {
 
+    private val nights = database.getAllNights()
 
+    private var tonight = MutableLiveData<QuizTable?>()
 
-    private suspend fun insert(question: QuizTable) {
-        Log.i("inseratar datos", database.getAllNights().value?.size.toString())
-        database.insert(question)
-        Log.i("inseratar datos", database.getAllNights().value?.size.toString())
+    fun allnights(): LiveData<List<QuizTable>> {
+
+        return nights
     }
 
 
+    init {
+        initializeTonight()
+    }
 
-
-    fun setQuestion( sentenceQuestion:String, correctanswer:String,
-                     wronganswerone:String, wronganswertwo:String, wronganswerthree:String) {
+    private fun initializeTonight() {
         viewModelScope.launch {
-            val newQuestion = QuizTable(questionSentence = sentenceQuestion,correctanswer = correctanswer,
-                    wronganswerone = wronganswerone,wronganswertwo = wronganswertwo,wronganswerthree = wronganswerthree)
-            insert(newQuestion)
-
+            tonight.value = getTonightFromDatabase()
         }
     }
 
-    val navigateToTitle: LiveData<QuizTable>
-    get()=_navigateToTitle
 
 
-    private val _navigateToTitle = MutableLiveData<QuizTable>()
+    private suspend fun getTonightFromDatabase(): QuizTable? {
+        var night = database.getTonight()
+
+        return night
+    }
+
+
+
+    fun setQuestion() {
+        viewModelScope.launch {
+            val newQuestion = QuizTable()
+            insert(newQuestion)
+            tonight.value = getTonightFromDatabase()
+
+        }
+        Log.i("inseratar datos", nights.value?.size.toString())
+    }
+    private suspend fun insert(question: QuizTable) {
+
+        database.insert(question)
+
+    }
+
+
 
 
 
