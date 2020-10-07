@@ -18,10 +18,12 @@ package com.example.android.navigation.gamefragment
 
 import androidx.databinding.DataBindingUtil
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.android.navigation.R
 import com.example.android.navigation.database.QuizDatabase
@@ -39,14 +41,32 @@ class GameFragment : Fragment() {
         val dataSource = QuizDatabase.getInstance(application).quizDatabaseDao
         val viewModelFactory = GameFragmentViewModelFactory(dataSource, application)
 
-        val GameViewModel =
+        val gameViewModel =
                 ViewModelProvider(
                         this, viewModelFactory).get(GameFragmentViewModel::class.java)
 
-        binding.gameViewModel = GameViewModel
+        binding.gameViewModel = gameViewModel
         binding.lifecycleOwner = this
 
-        
+        val observador= Observer<String> {
+            binding.questionText.text=it
+        }
+
+        gameViewModel.allnights().observe(viewLifecycleOwner, Observer {
+            if(it!=null){
+               binding.questionText.text=it.get(0)?.questionSentence.toString()
+                Log.i("init",it.get(0)?.questionSentence.toString())
+            }
+        })
+
+
+
+
+
+
+
+
+
 
 
 

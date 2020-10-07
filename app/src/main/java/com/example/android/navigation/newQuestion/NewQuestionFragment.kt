@@ -46,6 +46,7 @@ class NewQuestionFragment : Fragment() {
         newQuizViewModel.allnights().observe(viewLifecycleOwner, Observer {
             if(it!=null){
                 Log.i("observador","la base no es nula")
+                Log.i("init",it.get(0)?.questionSentence.toString())
             }
         })
 

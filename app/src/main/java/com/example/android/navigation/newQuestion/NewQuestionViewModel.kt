@@ -26,6 +26,7 @@ class NewQuestionViewModel (
 
     init {
         initializeTonight()
+
     }
 
     private fun initializeTonight() {
@@ -52,6 +53,7 @@ class NewQuestionViewModel (
 
         }
         Log.i("inseratar clear", nights.value?.size.toString())
+
     }
     private suspend fun insert(question: QuizTable) {
 
