@@ -35,6 +35,9 @@
         <action
             android:id="@+id/action_titleFragment_to_newQuestionFragment"
             app:destination="@id/newQuestionFragment" />
+        <action
+            android:id="@+id/action_titleFragment_to_showFragment"
+            app:destination="@id/showFragment" />
     </fragment>
     <fragment
         android:id="@+id/gameFragment"
@@ -114,4 +117,8 @@
             android:id="@+id/action_newQuestionFragment_to_titleFragment"
             app:destination="@id/titleFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/showFragment"
+        android:name="com.example.android.navigation.showquestions.ShowFragment"
+        android:label="ShowFragment" />
 </navigation>

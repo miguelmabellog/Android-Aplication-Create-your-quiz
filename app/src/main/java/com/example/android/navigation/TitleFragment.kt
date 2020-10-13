@@ -40,6 +40,10 @@ class TitleFragment : Fragment() {
         binding.newButton.setOnClickListener { v: View ->
             v.findNavController().navigate(TitleFragmentDirections.actionTitleFragmentToNewQuestionFragment())
         }
+        binding.showbutton.setOnClickListener{v: View ->
+            v.findNavController().navigate(TitleFragmentDirections.actionTitleFragmentToShowFragment())
+
+        }
         setHasOptionsMenu(true)
         return binding.root
     }
