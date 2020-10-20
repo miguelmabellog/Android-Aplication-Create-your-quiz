@@ -42,13 +42,13 @@ class NewQuestionFragment : Fragment() {
         // binding.setLifecycleOwner(this)
         binding.lifecycleOwner = this
 
+        binding.newsubmitButton.setOnClickListener{
+            newQuizViewModel.setQuestion(binding.newquestionText.text.toString(),binding.correctAnswerEditText.text.toString(),
+            binding.wrongOneEditText.text.toString(),binding.wrongTwoEditText.text.toString(),binding.wrongThreeEditText.text.toString())
+        }
 
-        newQuizViewModel.allnights().observe(viewLifecycleOwner, Observer {
-            if(it!=null){
-                Log.i("observador","la base no es nula")
-                Log.i("init",it.get(0)?.questionSentence.toString())
-            }
-        })
+
+
 
 
 

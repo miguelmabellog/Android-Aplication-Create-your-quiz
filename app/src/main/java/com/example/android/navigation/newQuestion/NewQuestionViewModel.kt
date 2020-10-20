@@ -45,9 +45,11 @@ class NewQuestionViewModel (
 
 
 
-    fun setQuestion() {
+    fun setQuestion(questionSentence:String, correctAnswer:String, wrongone:String, wrongtwo:String, wrongthree:String) {
+
         viewModelScope.launch {
-            val newQuestion = QuizTable()
+            val newQuestion = QuizTable(questionSentence = questionSentence, correctanswer = correctAnswer,
+            wronganswerone = wrongone, wronganswertwo = wrongtwo,wronganswerthree = wrongthree)
             insert(newQuestion)
             tonight.value = getTonightFromDatabase()
 

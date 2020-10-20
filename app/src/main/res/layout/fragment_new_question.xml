@@ -60,7 +60,7 @@
                 android:layout_marginTop="@dimen/vertical_margin"
                 android:layout_marginEnd="@dimen/question_horizontal_margin"
                 android:fontFamily="sans-serif"
-                android:text="hola"
+                android:hint="Question sentences"
                 android:textSize="@dimen/question_text_size"
                 android:textStyle="bold"
                 android:typeface="normal"
@@ -73,69 +73,69 @@
                 android:id="@+id/newsubmitButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="@{()->newQuestionViewModel.setQuestion()}"
+
                 android:text="@string/submit_button"
                 android:textSize="@dimen/button_text_size"
                 app:layout_constraintBottom_toTopOf="@+id/clear"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4" />
+                app:layout_constraintTop_toBottomOf="@+id/wrongThreeEditText" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName"
+                android:id="@+id/correctAnswerEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="10dp"
                 android:ems="10"
+                android:hint="Correct answer"
                 android:inputType="textPersonName"
-                android:text="Name"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/newquestionText" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName2"
+                android:id="@+id/wrongOneEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:ems="10"
+                android:hint="wrong answer 1"
                 android:inputType="textPersonName"
-                android:text="Name"
-                app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName3"
+                app:layout_constraintBottom_toTopOf="@+id/wrongTwoEditText"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+                app:layout_constraintTop_toBottomOf="@+id/correctAnswerEditText" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName3"
+                android:id="@+id/wrongTwoEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:ems="10"
+                android:hint="wrong answer 2"
                 android:inputType="textPersonName"
-                android:text="Name"
-                app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName4"
+                app:layout_constraintBottom_toTopOf="@+id/wrongThreeEditText"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+                app:layout_constraintTop_toBottomOf="@+id/wrongOneEditText" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName4"
+                android:id="@+id/wrongThreeEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:ems="10"
+                android:hint="wrong answer 3"
                 android:inputType="textPersonName"
-                android:text="Name"
                 app:layout_constraintBottom_toTopOf="@+id/newsubmitButton"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
+                app:layout_constraintTop_toBottomOf="@+id/wrongTwoEditText" />
 
             <Button
                 android:id="@+id/clear"

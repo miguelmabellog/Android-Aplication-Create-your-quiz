@@ -63,6 +63,9 @@
             app:popExitAnim="@anim/slide_out_left"
             app:popUpTo="@+id/gameFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_gameFragment_to_titleFragment"
+            app:destination="@id/titleFragment" />
     </fragment>
     <fragment
         android:id="@+id/gameWonFragment"

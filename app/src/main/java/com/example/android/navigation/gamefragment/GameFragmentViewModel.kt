@@ -14,20 +14,35 @@ class GameFragmentViewModel(
         val database: QuizDatabaseDao,
         application: Application) : AndroidViewModel(application) {
 
-    private val nights = database.getAllNights()
-    fun allnights(): LiveData<List<QuizTable>> {
+    var allRandomQuestions = database.getAllNights()
+    private var _nextQuestion=MutableLiveData(0)
+    private var _questionSentences=MutableLiveData(" ")
 
-        return nights
+
+    val nextQuestion: LiveData<Int>
+    get()=_nextQuestion
+
+    val questionStences: LiveData<String>
+    get()=_questionSentences
+
+    fun nextQuestion(){
+        _nextQuestion.value=(_nextQuestion.value ?: 0)+1
     }
 
+    fun shuffleList(): List<QuizTable>? {
+        return allRandomQuestions.value?.shuffled()
+    }
 
+    fun shuffleOptions(quizTable: QuizTable): List<String>{
+        var lista= mutableListOf<String>()
+        lista.add(quizTable.correctanswer)
+        lista.add(quizTable.wronganswerone)
+        lista.add(quizTable.wronganswertwo)
+        lista.add(quizTable.wronganswerthree)
+        lista.shuffle()
 
-
-
-
-
-
-
+        return lista
+    }
 
 
 
