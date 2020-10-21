@@ -41,10 +41,13 @@ class ShowFragment : Fragment() {
         binding.lifecycleOwner = this
 
 
-        val adapter = ShowAdapter()
+        val adapter = ShowAdapter(ListListener { nightId ->
+            //Toast.makeText(context, "${nightId}", Toast.LENGTH_LONG).show()
+            showViewModel.deleteId(nightId)
+        })
         binding.listofquestions.adapter = adapter
         binding.listofquestions.setOnClickListener {
-            
+
         }
 
         var space= SpactinItemDecorator(10)
@@ -54,7 +57,7 @@ class ShowFragment : Fragment() {
 
         showViewModel.allQuestions.observe(viewLifecycleOwner, Observer {
             it?.let {
-                adapter.data = it
+                adapter.submitList(it)
             }
         })
 

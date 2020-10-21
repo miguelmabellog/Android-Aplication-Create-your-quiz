@@ -1,15 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    android:layout_height="wrap_content"
-    android:background="#FF9800"
-    android:padding="24dp"
-    android:paddingStart="24dp"
-    android:paddingLeft="24dp"
-    android:paddingTop="24dp"
-    android:paddingEnd="24dp"
-    android:paddingRight="24dp"
-    android:paddingBottom="24dp"
-    android:textColor="#2196F3"
-    android:textSize="24sp" />
+    <data>
+        <variable
+            name="clickListener"
+            type="com.example.android.navigation.showquestions.ListListener" />
+
+        <variable
+            name="sentences"
+            type="com.example.android.navigation.database.QuizTable"/>
+    </data>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:onClick="@{() -> clickListener.onClick(sentences)}"
+        android:layout_height="wrap_content"
+        android:background="#FF9800"
+        android:padding="24dp"
+        android:paddingStart="24dp"
+        android:paddingLeft="24dp"
+        android:paddingTop="24dp"
+        android:paddingEnd="24dp"
+        android:paddingRight="24dp"
+        android:paddingBottom="24dp"
+        android:textColor="#2196F3"
+        android:textSize="24sp" />
+</layout>
