@@ -44,6 +44,7 @@ class GameFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
 
         var allquestions:List<QuizTable>
+        var chosenAnswers=0
 
 
         val binding = DataBindingUtil.inflate<FragmentGameBinding>(
@@ -67,19 +68,15 @@ class GameFragment : Fragment() {
                 lista= gameViewModel.shuffleList()!!
                 if(lista?.size>0){
 
-
+                    Log.i("item",gameViewModel.nextQuestion.value!!.toString())
 
                     binding.questionText.text=lista?.get(gameViewModel.nextQuestion.value!!)?.questionSentence.toString()
                     var options=gameViewModel.shuffleOptions(lista?.get(gameViewModel.nextQuestion.value!!))
-
 
                     binding.firstAnswerRadioButton.text=options.get(0)
                     binding.secondAnswerRadioButton.text=options.get(1)
                     binding.thirdAnswerRadioButton.text=options.get(2)
                     binding.fourthAnswerRadioButton.text=options.get(3)
-
-
-
 
                 }else{
                     Toast.makeText(getActivity(),"You have not created any question yet, create new questions",Toast.LENGTH_LONG).show();
@@ -93,55 +90,44 @@ class GameFragment : Fragment() {
         binding.submitButton.setOnClickListener{
             val index=binding.questionRadioGroup.checkedRadioButtonId
             val radioButton=binding.questionRadioGroup.findViewById<RadioButton>(index).text.toString()
+
+            if( gameViewModel.nextQuestion.value!!<lista.size){
             val correct=lista?.get(gameViewModel.nextQuestion.value!!)?.correctanswer.toString()
             val prove=radioButton.equals(correct)
 
             Log.i("son iguales", prove.toString())
+            if(prove){
+                chosenAnswers=chosenAnswers+1
+            }else{
+                chosenAnswers=0
+                findNavController().navigate(GameFragmentDirections.actionGameFragmentToGameOverFragment())
+            }
 
 
             gameViewModel.nextQuestion()
-
-
+            }
         }
 
-        fun nexsentence(lista: List<QuizTable>)
-        {
-            binding.questionText.text=lista?.get(gameViewModel.nextQuestion.value!!)?.questionSentence.toString()
-            var options=gameViewModel.shuffleOptions(lista?.get(gameViewModel.nextQuestion.value!!))
+        gameViewModel.nextQuestion.observe(viewLifecycleOwner, Observer {
+            Log.i("item",gameViewModel.nextQuestion.value!!.toString())
+            if(it>0 && it<lista.size){
+                binding.questionText.text=lista?.get(gameViewModel.nextQuestion.value!!)?.questionSentence.toString()
+                var options=gameViewModel.shuffleOptions(lista?.get(gameViewModel.nextQuestion.value!!))
 
+                binding.firstAnswerRadioButton.text=options.get(0)
+                binding.secondAnswerRadioButton.text=options.get(1)
+                binding.thirdAnswerRadioButton.text=options.get(2)
+                binding.fourthAnswerRadioButton.text=options.get(3)
+            }
+            if(it>0 && chosenAnswers==lista.size){
+                chosenAnswers=0
+                findNavController().navigate(GameFragmentDirections.actionGameFragmentToGameWonFragment(3,3))
+            }
 
-            binding.firstAnswerRadioButton.text=options.get(0)
-            binding.secondAnswerRadioButton.text=options.get(1)
-            binding.thirdAnswerRadioButton.text=options.get(2)
-            binding.fourthAnswerRadioButton.text=options.get(3)
-
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        })
 
 
         return binding.root
     }
-
 
 }

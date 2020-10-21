@@ -1,6 +1,7 @@
 package com.example.android.navigation.showquestions
 
 import android.os.Bundle
+import android.util.Log
 import androidx.lifecycle.Observer
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,7 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.android.navigation.R
 import com.example.android.navigation.database.QuizDatabase
 import com.example.android.navigation.databinding.FragmentShowBinding
-
+import com.example.android.navigation.utils.SpactinItemDecorator
 
 
 class ShowFragment : Fragment() {
@@ -42,6 +43,14 @@ class ShowFragment : Fragment() {
 
         val adapter = ShowAdapter()
         binding.listofquestions.adapter = adapter
+        binding.listofquestions.setOnClickListener {
+            
+        }
+
+        var space= SpactinItemDecorator(10)
+
+
+        binding.listofquestions.addItemDecoration(space)
 
         showViewModel.allQuestions.observe(viewLifecycleOwner, Observer {
             it?.let {

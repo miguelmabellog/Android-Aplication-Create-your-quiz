@@ -42,6 +42,9 @@ interface QuizDatabaseDao {
     @Query("DELETE FROM quiestion_and_answers_table")
     suspend fun clear()
 
+    @Query("DELETE FROM quiestion_and_answers_table WHERE questionId = :key")
+    suspend fun deleteId(key: Long)
+
     /**
      * Selects and returns all rows in the table,
      *
