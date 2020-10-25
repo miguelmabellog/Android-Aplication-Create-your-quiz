@@ -41,6 +41,7 @@ class TitleFragment : Fragment() {
             v.findNavController().navigate(TitleFragmentDirections.actionTitleFragmentToNewQuestionFragment())
         }
         binding.showbutton.setOnClickListener{v: View ->
+
             v.findNavController().navigate(TitleFragmentDirections.actionTitleFragmentToShowFragment())
 
         }

@@ -13,13 +13,23 @@ class ShowViewModel (
 
     val allQuestions = database.getAllNights()
 
-    private suspend fun clear() {
 
-    }
     fun deleteId(key: Long) {
         viewModelScope.launch {
             database.deleteId(key)
         }
+    }
+
+    private suspend fun clear() {
+        database.clear()
+    }
+    fun onClear() {
+
+        viewModelScope.launch {
+            clear()
+        }
+
+
     }
 
 }

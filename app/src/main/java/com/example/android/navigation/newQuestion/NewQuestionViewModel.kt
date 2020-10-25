@@ -71,7 +71,7 @@ class NewQuestionViewModel (
         viewModelScope.launch {
             clear()
         }
-        Log.i("inseratar clear", nights.value?.size.toString())
+
 
     }
 

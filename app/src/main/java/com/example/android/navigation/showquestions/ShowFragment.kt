@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.android.navigation.R
@@ -40,9 +41,10 @@ class ShowFragment : Fragment() {
         // binding.setLifecycleOwner(this)
         binding.lifecycleOwner = this
 
+        Toast.makeText(context, "Select the question to delete it", Toast.LENGTH_LONG).show()
 
         val adapter = ShowAdapter(ListListener { nightId ->
-            //Toast.makeText(context, "${nightId}", Toast.LENGTH_LONG).show()
+
             showViewModel.deleteId(nightId)
         })
         binding.listofquestions.adapter = adapter
@@ -56,8 +58,10 @@ class ShowFragment : Fragment() {
         binding.listofquestions.addItemDecoration(space)
 
         showViewModel.allQuestions.observe(viewLifecycleOwner, Observer {
+
             it?.let {
                 adapter.submitList(it)
+
             }
         })
 
