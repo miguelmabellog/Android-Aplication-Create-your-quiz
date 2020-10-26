@@ -5,6 +5,7 @@ Este proyecto es una aplicación desarrollada con arqutectura MVVM, haciendo uso
 La aplicación desarrollada permite crear tus propias preguntas y resolverlas de manera divertida en forma de Quiz.
 Primero tiene que crear tu propia pregunta dando click en la opcion new question.
 
-blob:file:///245336aa-eebc-46cf-8096-d2a0aaf1b26f
+
+<img src="screenshots/WhatsApp Image 2020-10-26 at 9.23.44 AM.jpeg" width="150" >
 
 Luego creas tu propia pregunta y opciones de respuesta.
