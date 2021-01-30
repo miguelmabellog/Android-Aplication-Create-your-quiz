@@ -1,7 +1,6 @@
 package com.example.android.navigation.showquestions
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.android.navigation.database.QuizDatabaseDao
@@ -11,7 +10,7 @@ class ShowViewModel (
         val database: QuizDatabaseDao,
         application: Application) : AndroidViewModel(application) {
 
-    val allQuestions = database.getAllNights()
+    val allQuestions = database.getAllQuestions()
 
 
     fun deleteId(key: Long) {

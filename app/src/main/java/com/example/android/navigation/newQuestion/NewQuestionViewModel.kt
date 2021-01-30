@@ -14,7 +14,7 @@ class NewQuestionViewModel (
         val database: QuizDatabaseDao,
         application: Application) : AndroidViewModel(application) {
 
-    private val nights = database.getAllNights()
+    private val nights = database.getAllQuestions()
 
     private var tonight = MutableLiveData<QuizTable?>()
 

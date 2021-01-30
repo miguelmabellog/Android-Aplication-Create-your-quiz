@@ -51,7 +51,7 @@ interface QuizDatabaseDao {
      * sorted by start time in descending order.
      */
     @Query("SELECT * FROM quiestion_and_answers_table ORDER BY questionId DESC")
-    fun getAllNights(): LiveData<List<QuizTable>>
+    fun getAllQuestions(): LiveData<List<QuizTable>>
 
     /**
      * Selects and returns the latest night.
