@@ -64,6 +64,7 @@
                 android:textSize="@dimen/question_text_size"
                 android:textStyle="bold"
                 android:typeface="normal"
+                android:text="@{gameViewModel.questionSentence}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/questionImage"
@@ -88,7 +89,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/question_vertical_margin"
                     android:checked="true"
-                    android:text="hola"
+                    android:text="@{gameViewModel.firstAsnwer}"
                     android:textSize="@dimen/answer_text_size"
                     tools:text="Blue" />
 
@@ -97,7 +98,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/question_vertical_margin"
-                    android:text="hola"
+                    android:text="@{gameViewModel.secondAnswer}"
                     android:textSize="@dimen/answer_text_size"
                     tools:text="Green" />
 
@@ -106,7 +107,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/question_vertical_margin"
-                    android:text="hola"
+                    android:text="@{gameViewModel.tirthAnswer}"
                     android:textSize="@dimen/answer_text_size"
                     tools:text="Yellow" />
 
@@ -114,14 +115,13 @@
                     android:id="@+id/fourthAnswerRadioButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="hola"
+                    android:text="@{gameViewModel.forthAnswer}"
                     android:textSize="@dimen/answer_text_size"
                     tools:text="Red" />
             </RadioGroup>
 
             <Button
                 android:id="@+id/submitButton"
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/question_horizontal_margin"
@@ -129,6 +129,7 @@
                 android:layout_marginEnd="@dimen/question_horizontal_margin"
                 android:text="@string/submit_button"
                 android:textSize="@dimen/button_text_size"
+                android:onClick="@{()->gameViewModel.nextQuestion()}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/questionRadioGroup" />

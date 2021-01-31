@@ -29,7 +29,7 @@ class HomeActivityTest {
     @Test fun addNewQuestion() {
         onView(withId(R.id.newButton)).perform(click())
 
-        onView(withId(R.id.newquestionText)).perform(typeText("pregunta"))
+        onView(withId(R.id.newquestionText)).perform(typeText("pregunta 2"))
         closeSoftKeyboard()
         onView(withId(R.id.correctAnswerEditText)).perform(typeText("respuesta"))
         closeSoftKeyboard()
@@ -45,6 +45,10 @@ class HomeActivityTest {
 
     @Test fun winplay() {
         onView(withId(R.id.playButton)).perform(click())
+
+        onView(withText("respuesta")).perform(click())
+
+        onView(withId(R.id.submitButton)).perform(click())
 
         onView(withText("respuesta")).perform(click())
 
