@@ -16,10 +16,8 @@
 
 package com.example.android.navigation.gamefragment
 
-import android.app.Activity
 import androidx.databinding.DataBindingUtil
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -28,10 +26,11 @@ import android.widget.RadioButton
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.android.navigation.R
+import com.example.android.navigation.TitleFragmentDirections
 import com.example.android.navigation.database.QuizDatabase
-import com.example.android.navigation.database.QuizTable
 import com.example.android.navigation.databinding.FragmentGameBinding
 
 class GameFragment : Fragment() {
@@ -40,8 +39,8 @@ class GameFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
-        var allquestions:List<QuizTable>
-        var chosenAnswers=0
+
+
 
 
         val binding = DataBindingUtil.inflate<FragmentGameBinding>(
@@ -62,55 +61,38 @@ class GameFragment : Fragment() {
 
         gameViewModel.allRandomQuestions.observe(viewLifecycleOwner, Observer {
             it?.let {
-                gameViewModel.shuffleListOfQuestions(it)
-                if(!gameViewModel.noEmptyQuestions()){
-                    Toast.makeText(activity, "Saved- ", Toast.LENGTH_SHORT).show()
+                if(it.isEmpty()){
+                    Toast.makeText(activity, "Saved", Toast.LENGTH_SHORT).show()
+                }else{
+                    gameViewModel.shuffleListOfQuestions(it)
+                    gameViewModel.bindQuestions(0)
                 }
             }
         })
 
-        gameViewModel.nextQuestion.observe(viewLifecycleOwner, Observer {
-            gameViewModel.bindQuestions(it)
-        })
-
-        /*binding.submitButton.setOnClickListener{
+        binding.submitButton.setOnClickListener {
             val index=binding.questionRadioGroup.checkedRadioButtonId
-            val radioButton=binding.questionRadioGroup.findViewById<RadioButton>(index).text.toString()
-
-            if( gameViewModel.nextQuestion.value!!<lista.size){
-            val correct=lista?.get(gameViewModel.nextQuestion.value!!)?.correctanswer.toString()
-            val prove=radioButton.equals(correct)
-
-            Log.i("son iguales", prove.toString())
-            if(prove){
-                chosenAnswers=chosenAnswers+1
-            }else{
-                chosenAnswers=0
-                findNavController().navigate(GameFragmentDirections.actionGameFragmentToGameOverFragment())
-            }
-
-
-            gameViewModel.nextQuestion()
-            }
+            val selectedoption=binding.questionRadioGroup.findViewById<RadioButton>(index).text.toString()
+            gameViewModel.check(selectedoption)
         }
 
-        gameViewModel.nextQuestion.observe(viewLifecycleOwner, Observer {
-            Log.i("item",gameViewModel.nextQuestion.value!!.toString())
-            if(it>0 && it<lista.size){
-                binding.questionText.text=lista?.get(gameViewModel.nextQuestion.value!!)?.questionSentence.toString()
-                var options=gameViewModel.shuffleOptions(lista?.get(gameViewModel.nextQuestion.value!!))
-
-                binding.firstAnswerRadioButton.text=options.get(0)
-                binding.secondAnswerRadioButton.text=options.get(1)
-                binding.thirdAnswerRadioButton.text=options.get(2)
-                binding.fourthAnswerRadioButton.text=options.get(3)
+        gameViewModel.result.observe(viewLifecycleOwner, Observer {
+            if(it==true){
+                Toast.makeText(activity, "bien", Toast.LENGTH_SHORT).show()
+                gameViewModel.nextQuestion()
+                if(gameViewModel.askforwin()){
+                    findNavController().navigate(GameFragmentDirections.actionGameFragmentToGameWonFragment(0,0))
+                }
             }
-            if(it>0 && chosenAnswers==lista.size){
-                chosenAnswers=0
-                findNavController().navigate(GameFragmentDirections.actionGameFragmentToGameWonFragment(3,3))
+            if(it==false){
+                Toast.makeText(activity, "mal", Toast.LENGTH_SHORT).show()
+                findNavController().navigate(GameFragmentDirections.actionGameFragmentToGameOverFragment())
             }
+        })
 
-        })*/
+
+
+
 
 
         return binding.root

@@ -129,7 +129,6 @@
                 android:layout_marginEnd="@dimen/question_horizontal_margin"
                 android:text="@string/submit_button"
                 android:textSize="@dimen/button_text_size"
-                android:onClick="@{()->gameViewModel.nextQuestion()}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/questionRadioGroup" />
