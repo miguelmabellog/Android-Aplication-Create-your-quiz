@@ -18,10 +18,7 @@ class NewQuestionViewModel (
 
     private var tonight = MutableLiveData<QuizTable?>()
 
-    fun allnights(): LiveData<List<QuizTable>> {
 
-        return nights
-    }
 
 
     init {
@@ -54,7 +51,7 @@ class NewQuestionViewModel (
             tonight.value = getTonightFromDatabase()
 
         }
-        Log.i("inseratar clear", nights.value?.size.toString())
+
 
     }
     private suspend fun insert(question: QuizTable) {

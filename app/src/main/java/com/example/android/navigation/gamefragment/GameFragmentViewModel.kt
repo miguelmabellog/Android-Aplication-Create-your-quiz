@@ -4,15 +4,18 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.paging.PagedList
+import androidx.paging.toLiveData
 import com.example.android.navigation.database.QuizDatabaseDao
 import com.example.android.navigation.database.QuizTable
+
 import kotlinx.coroutines.withTimeoutOrNull
 
 class GameFragmentViewModel(
         val database: QuizDatabaseDao,
         application: Application) : AndroidViewModel(application) {
 
-    var allRandomQuestions = database.getAllQuestions()
+    var allRandomQuestions: LiveData<PagedList<QuizTable>> = database.getAllQuestions().toLiveData(pageSize = 10)
     private lateinit var shuffledQuestions: List<QuizTable>
 
 

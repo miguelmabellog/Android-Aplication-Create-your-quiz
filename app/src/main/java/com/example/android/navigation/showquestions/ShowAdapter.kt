@@ -7,6 +7,7 @@ import android.view.ViewGroup
 
 import android.widget.TextView
 import android.widget.Toast
+import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -15,7 +16,7 @@ import com.example.android.navigation.database.QuizTable
 import com.example.android.navigation.databinding.TextItemViewBinding
 import com.example.android.navigation.utils.TextItemViewHolder
 
-class ShowAdapter(val clickListener: ListListener): ListAdapter<QuizTable, ShowAdapter.ViewHolder>(QuizDiffCallback()) {
+class ShowAdapter(val clickListener: ListListener): PagedListAdapter<QuizTable, ShowAdapter.ViewHolder>(QuizDiffCallback()) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(getItem(position)!!, clickListener)

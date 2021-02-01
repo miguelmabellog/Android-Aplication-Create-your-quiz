@@ -44,7 +44,6 @@ class ShowFragment : Fragment() {
         Toast.makeText(context, "Select the question to delete it", Toast.LENGTH_LONG).show()
 
         val adapter = ShowAdapter(ListListener { nightId ->
-
             showViewModel.deleteId(nightId)
         })
         binding.listofquestions.adapter = adapter
