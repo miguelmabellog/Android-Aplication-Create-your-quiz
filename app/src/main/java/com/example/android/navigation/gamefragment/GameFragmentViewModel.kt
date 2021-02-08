@@ -1,13 +1,26 @@
 package com.example.android.navigation.gamefragment
 
+import android.app.AlarmManager
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import android.app.NotificationManager
+import android.app.PendingIntent
+import android.content.Context
+import android.content.Intent
+import android.os.CountDownTimer
+import android.os.SystemClock
+import androidx.core.app.AlarmManagerCompat
+import androidx.core.content.ContextCompat
+import androidx.lifecycle.*
 import androidx.paging.PagedList
 import androidx.paging.toLiveData
 import com.example.android.navigation.database.QuizDatabaseDao
 import com.example.android.navigation.database.QuizTable
+import com.example.android.navigation.reciver.AlarmReceiver
+import com.example.android.navigation.R
+import com.example.android.navigation.utils.cancelNotifications
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 import kotlinx.coroutines.withTimeoutOrNull
 
@@ -19,7 +32,7 @@ class GameFragmentViewModel(
     private lateinit var shuffledQuestions: List<QuizTable>
 
 
-    private var numberGood=0
+    private var numberGood = 0
 
 
     var _itemQuestion = MutableLiveData<Int?>()
@@ -33,13 +46,18 @@ class GameFragmentViewModel(
             _itemQuestion.value = _itemQuestion.value?.plus(1)
         }
         bindQuestions(_itemQuestion.value)
+
+
+        resetTimer()
+        setAlarm(true)
+
+
     }
 
 
-
-    var _result=MutableLiveData<Boolean?>()
-    val result:LiveData<Boolean?>
-        get()=_result
+    var _result = MutableLiveData<Boolean?>()
+    val result: LiveData<Boolean?>
+        get() = _result
 
 
     val questionSentence: LiveData<String>
@@ -62,7 +80,7 @@ class GameFragmentViewModel(
         get() = _forthAnswer
     private var _forthAnswer = MutableLiveData<String>()
 
-    private var size=0
+    private var size = 0
 
 
     fun shuffleListOfQuestions(allQuestions: List<QuizTable>) {
@@ -84,7 +102,7 @@ class GameFragmentViewModel(
 
 
     fun bindQuestions(itemQuestion: Int?) {
-        if (itemQuestion != null && itemQuestion<size) {
+        if (itemQuestion != null && itemQuestion < size) {
             _questionsSentence.value = shuffledQuestions[itemQuestion].questionSentence
             val options = shuffleOptions(shuffledQuestions[itemQuestion])
 
@@ -95,30 +113,166 @@ class GameFragmentViewModel(
         }
     }
 
-    fun check(selectedoption: String){
-        var iqual:Boolean?=false
-        if(itemQuestion.value==null){
-            iqual=shuffledQuestions[0].correctanswer==selectedoption
-        }else{
-            if(itemQuestion!!.value!!<size){
-                iqual=shuffledQuestions[itemQuestion.value!!].correctanswer==selectedoption
+    fun check(selectedoption: String) {
+        var iqual: Boolean? = false
+        if (itemQuestion.value == null) {
+            iqual = shuffledQuestions[0].correctanswer == selectedoption
+        } else {
+            if (itemQuestion!!.value!! < size) {
+                iqual = shuffledQuestions[itemQuestion.value!!].correctanswer == selectedoption
             }
         }
-        if (iqual!!){
+        if (iqual!!) {
             numberGood++
         }
-        _result.value=iqual
+        _result.value = iqual
+
 
     }
 
-    fun askforwin():Boolean{
+    fun askforwin(): Boolean {
 
-        return numberGood== size
+        return numberGood == size
+    }
+
+    private val app = application
+    private var _alarmOn = MutableLiveData<Boolean>(false)
+    val isAlarmOn: LiveData<Boolean>
+        get() = _alarmOn
+
+    private val REQUEST_CODE = 0
+    private val notifyIntent = Intent(app, AlarmReceiver::class.java)
+
+    private val notifyPendingIntent: PendingIntent
+
+    private val timerLengthOptions: IntArray
+
+    private lateinit var timer: CountDownTimer
+
+    private val second: Long = 1_000L
+
+    private val _elapsedTime = MutableLiveData<Long>()
+    val elapsedTime: LiveData<Long>
+        get() = _elapsedTime
+
+    private var prefs =
+            app.getSharedPreferences("com.example.android.navigation", Context.MODE_PRIVATE)
+
+    private val TRIGGER_TIME = "TRIGGER_AT"
+
+    private val minute: Long = 60_000L
+
+    private val alarmManager = app.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+
+    init {
+        /*_alarmOn.value = PendingIntent.getBroadcast(
+                getApplication(),
+                REQUEST_CODE,
+                notifyIntent,
+                PendingIntent.FLAG_NO_CREATE
+        ) != null*/
+
+        notifyPendingIntent = PendingIntent.getBroadcast(
+                getApplication(),
+                REQUEST_CODE,
+                notifyIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT
+        )
+
+        timerLengthOptions = app.resources.getIntArray(R.array.minutes_array)
+
+        if (_alarmOn.value!!) {
+            createTimer()
+        }
+
+
+        setAlarm(true)
+    }
+
+    fun setAlarm(isChecked: Boolean) {
+        when (isChecked) {
+            true -> {
+                startTimer(0)
+            }
+            false -> cancelNotification()
+        }
     }
 
 
+        private fun createTimer() {
+        viewModelScope.launch {
+            val triggerTime = loadTime()
+            timer = object : CountDownTimer(triggerTime, second) {
+                override fun onTick(millisUntilFinished: Long) {
+                    _elapsedTime.value = triggerTime - SystemClock.elapsedRealtime()
+                    if (_elapsedTime.value!! <= 0) {
+                        resetTimer()
+                    }
+                }
+
+                override fun onFinish() {
+                    resetTimer()
+                }
+            }
+            timer.start()
+        }
+    }
+
+    private fun resetTimer() {
+        timer.cancel()
+        _elapsedTime.value = 0
+        _alarmOn.value = false
+    }
+
+    private suspend fun loadTime(): Long =
+            withContext(Dispatchers.IO) {
+                prefs.getLong(TRIGGER_TIME, 0)
+            }
+
+    private suspend fun saveTime(triggerTime: Long) =
+            withContext(Dispatchers.IO) {
+                prefs.edit().putLong(TRIGGER_TIME, triggerTime).apply()
+            }
+
+    private fun cancelNotification() {
+        resetTimer()
+        alarmManager.cancel(notifyPendingIntent)
+    }
+
+    private fun startTimer(timerLengthSelection: Int) {
+        _alarmOn.value?.let {
+            if (!it) {
+                _alarmOn.value = false
+                val selectedInterval = when (timerLengthSelection) {
+                    0 -> second * 10 //For testing only
+                    else ->timerLengthOptions[timerLengthSelection] * minute
+                }
+                val triggerTime = SystemClock.elapsedRealtime() + selectedInterval
 
 
+                val notificationManager =
+                        ContextCompat.getSystemService(
+                                app,
+                                NotificationManager::class.java
+                        ) as NotificationManager
+
+                notificationManager.cancelNotifications()
+
+                AlarmManagerCompat.setExactAndAllowWhileIdle(
+                        alarmManager,
+                        AlarmManager.ELAPSED_REALTIME_WAKEUP,
+                        triggerTime,
+                        notifyPendingIntent
+                )
+
+
+                viewModelScope.launch {
+                    saveTime(triggerTime)
+                }
+            }
+        }
+        createTimer()
+    }
 
 }
 
