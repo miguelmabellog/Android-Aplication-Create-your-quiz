@@ -13,7 +13,31 @@ Notification: Notifica cuando el tiempo termina
 BroadCast: Se suscribe al evento de que el tiempo se termine.
 Test: UI test Espresso
 
-![Screenshot](acercade.gif)
+## Aplicación
+
+Navegacion menu y drawer.
+
+<img src="acercade.gif" width="130" height="250"/>
+
+Juega y gana.
+
+<img src="anwer.gif" width="130" height="250"/>
+
+Se acaba el tiempo.
+
+<img src="timeup.gif" width="130" height="250"/>
+
+Nueva pregunta.
+
+<img src="newadd.gif" width="130" height="250"/>
+
+Borrar pregunta
+
+<img src="delete.gif" width="130" height="250"/>
+
+## License
+
+Application developed by Miguel Angel Bello Garcia, github @miguelmabellog
 
 
 
