@@ -1,27 +1,19 @@
-# Android-Aplication-Create-your-quiz
+# Crea tu quiz
 
-Este proyecto es una aplicación desarrollada con arqutectura MVVM, haciendo uso de navigation y la libreria ROOM, este es un proyecto de extención del proyecto origina que se encuentra en https://github.com/udacity/andfun-kotlin-android-trivia.
+Esta es una aplicación que permite de forma divertida solucionar preguntar de respuestas multiple para repasar temas que sean importantes para ti, se pueden crear las propias preguntas y cuenta con un tiempo limite para responder estar preguntas.
 
-La aplicación desarrollada permite crear tus propias preguntas y resolverlas de manera divertida en forma de Quiz.
-Primero tiene que crear tu propia pregunta dando click en la opcion new question.
+## Tecnologia aplicada
 
-<img src="screenshots/WhatsApp Image 2020-10-26 at 9.21.59 AM.jpeg" width="150" >
+MVVM: arquitectura. <br />
+Room: Base de datos local. <br />
+Paging: Paginacion al mostrar preguntas en RecyclerView
+Navigation: navegacion entre fragments. <br />
+DataBinding: Union entre componentes layout y controladores. <br />
+Notification: Notifica cuando el tiempo termina
+BroadCast: Se suscribe al evento de que el tiempo se termine.
+Test: UI test Espresso
 
-
-Luego creas tu propia pregunta y opciones de respuesta.
-
-<img src="screenshots/WhatsApp Image 2020-10-26 at 9.23.44 AM.jpeg" width="150" >
-
-
-
-Y ya puedes jugar
-
-
-<img src="screenshots/WhatsApp Image 2020-10-26 at 9.23.26 AM.jpeg" width="150" >
+![Screenshot](acercade.gif)
 
 
-
-Si lo deseas puedes eliminar una pregunta dando click en la opcion show questions y luego dando click en la pregunta, ten en cuenta que no podras ver las respuestas
-
-<img src="screenshots/WhatsApp Image 2020-10-26 at 9.22.58 AM.jpeg" width="150" >
 
