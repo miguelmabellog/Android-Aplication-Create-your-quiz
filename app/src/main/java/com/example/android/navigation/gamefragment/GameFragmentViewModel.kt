@@ -15,14 +15,12 @@ import androidx.paging.PagedList
 import androidx.paging.toLiveData
 import com.example.android.navigation.database.QuizDatabaseDao
 import com.example.android.navigation.database.QuizTable
-import com.example.android.navigation.reciver.AlarmReceiver
+import com.example.android.navigation.receiver.AlarmReceiver
 import com.example.android.navigation.R
 import com.example.android.navigation.utils.cancelNotifications
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-
-import kotlinx.coroutines.withTimeoutOrNull
 
 class GameFragmentViewModel(
         val database: QuizDatabaseDao,

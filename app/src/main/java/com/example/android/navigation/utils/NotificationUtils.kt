@@ -8,7 +8,7 @@ import android.graphics.BitmapFactory
 import androidx.core.app.NotificationCompat
 import com.example.android.navigation.MainActivity
 import com.example.android.navigation.R
-import com.example.android.navigation.reciver.SnoozeReceiver
+import com.example.android.navigation.receiver.SnoozeReceiver
 
 private val NOTIFICATION_ID = 0
 private val REQUEST_CODE = 0

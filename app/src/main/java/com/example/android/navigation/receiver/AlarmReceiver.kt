@@ -1,4 +1,4 @@
-package com.example.android.navigation.reciver
+package com.example.android.navigation.receiver
 
 import android.app.NotificationManager
 import android.content.BroadcastReceiver
