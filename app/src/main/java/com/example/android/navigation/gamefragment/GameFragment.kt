@@ -96,6 +96,12 @@ class GameFragment : Fragment() {
                 getString(R.string.egg_notification_channel_name)
         )
 
+        gameViewModel.elapsedTime.observe(viewLifecycleOwner, Observer {
+            if(it == 0L && !gameViewModel.result.value!! ){
+                findNavController().navigate(GameFragmentDirections.actionGameFragmentToGameOverFragment())
+            }
+        })
+
         return binding.root
     }
 

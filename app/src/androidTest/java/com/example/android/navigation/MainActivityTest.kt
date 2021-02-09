@@ -29,7 +29,7 @@ class HomeActivityTest {
     @Test fun addNewQuestion() {
         onView(withId(R.id.newButton)).perform(click())
 
-        onView(withId(R.id.newquestionText)).perform(typeText("pregunta 2"))
+        onView(withId(R.id.newquestionText)).perform(typeText("pregunta 3"))
         closeSoftKeyboard()
         onView(withId(R.id.correctAnswerEditText)).perform(typeText("respuesta"))
         closeSoftKeyboard()

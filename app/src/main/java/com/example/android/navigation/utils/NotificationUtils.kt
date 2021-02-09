@@ -29,7 +29,7 @@ fun NotificationManager.sendNotification(messageBody: String, applicationContext
 
     val eggImage = BitmapFactory.decodeResource(
             applicationContext.resources,
-            R.drawable.cooked_egg
+            R.drawable.time
     )
     val bigPicStyle = NotificationCompat.BigPictureStyle()
             .bigPicture(eggImage)
@@ -51,7 +51,7 @@ fun NotificationManager.sendNotification(messageBody: String, applicationContext
     )
 
 
-            .setSmallIcon(R.drawable.cooked_egg)
+            .setSmallIcon(R.drawable.ic_baseline_mood_bad_24)
             .setContentTitle(applicationContext
                     .getString(R.string.notification_title))
             .setContentText(messageBody)
@@ -66,7 +66,7 @@ fun NotificationManager.sendNotification(messageBody: String, applicationContext
 
 
             .addAction(
-                    R.drawable.egg_icon,
+                    R.drawable.ic_baseline_mood_bad_24,
                     applicationContext.getString(R.string.snooze),
                     snoozePendingIntent
             )

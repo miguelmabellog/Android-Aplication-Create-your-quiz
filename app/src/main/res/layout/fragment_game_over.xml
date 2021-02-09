@@ -23,11 +23,24 @@
         android:id="@+id/gameOverConstraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/gameOverBackground">
+        android:background="#EA7B58">
+
+        <TextView
+            android:id="@+id/textView5"
+            style="@style/title_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="56dp"
+            android:text="@string/try_again_wrong"
+            app:layout_constraintBottom_toTopOf="@+id/youWinImage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/gameOverFragment"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="362dp"
             android:layout_marginStart="@dimen/horizontal_margin"
             android:layout_marginEnd="@dimen/horizontal_margin"
@@ -38,7 +51,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed"
-            app:srcCompat="@drawable/try_again" />
+            app:srcCompat="@drawable/ic_baseline_mood_bad_24" />
 
         <Button
             android:id="@+id/tryAgainButton"

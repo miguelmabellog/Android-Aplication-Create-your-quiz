@@ -44,10 +44,14 @@
     <string name="eggs_ready">El tiempo a terminado!</string>
     <string name="timer_running">Egg timer is running...</string>
     <string name="breakfast_notification_channel_description">Breakfast reminder</string>
-    <string name="snooze">Snooze</string>
+    <string name="snooze">Entendido</string>
     <string name="play_button">Juega</string>
     <string name="new_question">nueva pregunta</string>
     <string name="show_all_questions">editar preguntas</string>
+    <string name="title_name">Crea tu quiz</string>
+    <string name="win_button">continuar</string>
+    <string name="Congratulation">Felicitaciones</string>
+    <string name="try_again_wrong">Vuelve a intentarlo</string>
 
 
 </resources>

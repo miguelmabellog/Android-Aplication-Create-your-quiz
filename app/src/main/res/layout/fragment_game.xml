@@ -30,12 +30,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
+                android:textColor="@color/design_default_color_error"
+                android:textSize="36sp"
                 app:elapsedTime="@{gameViewModel.elapsedTime}"
-                android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@+id/questionImage"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="99"
+                tools:visibility="visible" />
 
             <ImageView
                 android:id="@+id/questionImage"
@@ -51,7 +54,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_chainStyle="packed"
-                app:srcCompat="@drawable/android_category_simple" />
+                app:srcCompat="@drawable/ic_baseline_miscellaneous_services_24" />
 
             <TextView
                 android:id="@+id/questionText"
