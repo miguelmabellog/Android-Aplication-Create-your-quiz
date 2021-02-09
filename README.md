@@ -9,9 +9,9 @@ Room: Base de datos local. <br />
 Paging: Paginacion al mostrar preguntas en RecyclerView
 Navigation: navegacion entre fragments. <br />
 DataBinding: Union entre componentes layout y controladores. <br />
-Notification: Notifica cuando el tiempo termina
-BroadCast: Se suscribe al evento de que el tiempo se termine.
-Test: UI test Espresso
+Notification: Notifica cuando el tiempo termina. <br />
+BroadCast: Se suscribe al evento de que el tiempo se termine. <br />
+Test: UI test Espresso. <br />
 
 ## Aplicación
 
