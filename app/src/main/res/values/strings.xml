@@ -1,39 +1,25 @@
-<!--
-  ~ Copyright 2018, The Android Open Source Project
-  ~
-  ~ Licensed under the Apache License, Version 2.0 (the "License");
-  ~ you may not use this file except in compliance with the License.
-  ~ You may obtain a copy of the License at
-  ~
-  ~     http://www.apache.org/licenses/LICENSE-2.0
-  ~
-  ~ Unless required by applicable law or agreed to in writing, software
-  ~ distributed under the License is distributed on an "AS IS" BASIS,
-  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~ See the License for the specific language governing permissions and
-  ~ limitations under the License.
-  -->
+
 
 <resources>
-    <string name="app_name">Android Trivia</string>
-    <string name="game_over">Game Over</string>
-    <string name="try_again">Try Again?</string>
-    <string name="position">Position</string>
-    <string name="select_an_avatar">Select an Avatar</string>
-    <string name="android_trivia">Android Trivia</string>
-    <string name="about_text">Android Trivia will help remind you of important concepts you have learned and will learn in Android development.\n\nConsider modifying the questions and graphics to make this game your own!</string>
-    <string name="rules_text">Select the answer from the options given. Each time you get an answer correct, you advance to the next question.\n\nIf you get the answer wrong, your game ends! You can return to the title screen using up or back from within the game screen, and this will also end your game.</string>
-    <string name="rules">Rules</string>
-    <string name="about">About</string>
-    <string name="trivia_hint">Trivia Hint</string>
-    <string name="title_android_trivia_question">Android Trivia (%1$d/%2$d)</string>
-    <string name="title_about_trivia">About Trivia</string>
-    <string name="title_trivia_rules">Trivia Rules</string>
-    <string name="share_success_text">I mastered #UdacityAndroidTrivia with %1$d/%2$d correct questions!</string>
-    <string name="submit_button">Submit</string>
-    <string name="congratulations">Congratulations!</string>
-    <string name="share">Share</string>
-    <string name="sharing_not_available">Sharing Not Available</string>
+    <string name="app_name">Crea tu propio Quiz</string>
+    <string name="game_over">Fin del juego</string>
+    <string name="try_again">Intentalo de nuevo</string>
+    <string name="position">Posición</string>
+    <string name="select_an_avatar">Selecciona un personaje</string>
+    <string name="android_trivia">Crea tu propio Quiz</string>
+    <string name="about_text">Crea tu propio Quiz es una forma divertida de practicar conceptos que sean importantes para ti.</string>
+    <string name="rules_text">Puedes crear tus propias preguntas de respuesta multiple, y asignarles un tiempo de respuesta, sí no contestas en el tiempo correspondiente o respondes mal debes volver a comenzar</string>
+    <string name="rules">Reglas</string>
+    <string name="about">Acerca de</string>
+    <string name="trivia_hint">Pregunta</string>
+    <string name="title_android_trivia_question">Crea tu propio Quiz (%1$d/%2$d)</string>
+    <string name="title_about_trivia">Acerca de Crea tu propio quiz</string>
+    <string name="title_trivia_rules">Reglas de juego</string>
+    <string name="share_success_text">Ganaste  %1$d/%2$d Respuestas correctas!</string>
+    <string name="submit_button">Enviar</string>
+    <string name="congratulations">Felecitaciones!</string>
+    <string name="share">Compartir</string>
+    <string name="sharing_not_available">Compartir disponible</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
@@ -45,7 +31,7 @@
     <string name="egg_prompt">How do you like your egg?</string>
     <string name="timer_on">Start</string>
     <string name="timer_off">Stop</string>
-    <string name="notification_title">Egg Timer</string>
+    <string name="notification_title">Tiempo</string>
     <string name="notification_text">Your egg is ready!!</string>
 
     <string name="fcm_message">FCM Message</string>
@@ -55,11 +41,13 @@
     <string name="egg_notification_channel_name" translatable="true">Egg</string>
     <string name="breakfast_notification_channel_id" translatable="false">fcm_default_channel</string>
     <string name="breakfast_notification_channel_name" translatable="true">Breakfast</string>
-    <string name="eggs_ready">It is time! Bon appetit!</string>
+    <string name="eggs_ready">El tiempo a terminado!</string>
     <string name="timer_running">Egg timer is running...</string>
     <string name="breakfast_notification_channel_description">Breakfast reminder</string>
     <string name="snooze">Snooze</string>
-
+    <string name="play_button">Juega</string>
+    <string name="new_question">nueva pregunta</string>
+    <string name="show_all_questions">editar preguntas</string>
 
 
 </resources>
