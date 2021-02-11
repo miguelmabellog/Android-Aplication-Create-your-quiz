@@ -6,7 +6,8 @@ Esta es una aplicación que permite de forma divertida solucionar preguntar de r
 
 MVVM: arquitectura. <br />
 Room: Base de datos local. <br />
-Paging: Paginacion al mostrar preguntas en RecyclerView
+Corutines: corutinas para manejar ejecucion de codigo asincrono.<br />
+Paging: Paginacion al mostrar preguntas en RecyclerView.
 Navigation: navegacion entre fragments. <br />
 DataBinding: Union entre componentes layout y controladores. <br />
 Notification: Notifica cuando el tiempo termina. <br />
