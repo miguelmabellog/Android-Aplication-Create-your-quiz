@@ -18,23 +18,23 @@ Test: UI test Espresso. <br />
 
 Acceso al menu y navigation drawer que permite ver las reglas del juego y de que se trata.
 
-<img src="acercade.gif" width="230" height="370"/>
+<img src="acercade.gif" width="230" height="340"/>
 
 Comienza a jugar, resuleve tods las reguntas dentro del tiempo y ganas.
 
-<img src="anwer.gif" width="230" height="350"/>
+<img src="anwer.gif" width="230" height="340"/>
 
 Despues de los 10 segundos asignados sin responder la preguntas perderas y se mostrara una notificacion.
 
-<img src="timeup.gif" width="230" height="350"/>
+<img src="timeup.gif" width="230" height="340"/>
 
 Crea una nueva pregunta para este proceso se implemente un UI test con espresso.
 
-<img src="newadd.gif" width="130" height="250"/>
+<img src="newadd.gif" width="230" height="340"/>
 
 Elimina una o todas las preguntas que has creado, las puedes observar todas en una lista
 
-<img src="delete.gif" width="230" height="350"/>
+<img src="delete.gif" width="230" height="340"/>
 
 ## License
 
