@@ -7,7 +7,7 @@ Esta es una aplicación que permite de forma divertida solucionar preguntar de r
 MVVM: arquitectura. <br />
 Room: Base de datos local. <br />
 Corutines: corutinas para manejar ejecucion de codigo asincrono.<br />
-Paging: Paginacion al mostrar preguntas en RecyclerView.
+Paging: Paginacion al mostrar preguntas en RecyclerView.<br />
 Navigation: navegacion entre fragments. <br />
 DataBinding: Union entre componentes layout y controladores. <br />
 Notification: Notifica cuando el tiempo termina. <br />
@@ -16,25 +16,25 @@ Test: UI test Espresso. <br />
 
 ## Aplicación
 
-Navegacion menu y drawer.
+Acceso al menu y navigation drawer que permite ver las reglas del juego y de que se trata.
 
-<img src="acercade.gif" width="130" height="250"/>
+<img src="acercade.gif" width="230" height="370"/>
 
-Juega y gana.
+Comienza a jugar, resuleve tods las reguntas dentro del tiempo y ganas.
 
-<img src="anwer.gif" width="130" height="250"/>
+<img src="anwer.gif" width="230" height="350"/>
 
-Se acaba el tiempo.
+Despues de los 10 segundos asignados sin responder la preguntas perderas y se mostrara una notificacion.
 
-<img src="timeup.gif" width="130" height="250"/>
+<img src="timeup.gif" width="230" height="350"/>
 
-Nueva pregunta.
+Crea una nueva pregunta para este proceso se implemente un UI test con espresso.
 
 <img src="newadd.gif" width="130" height="250"/>
 
-Borrar pregunta
+Elimina una o todas las preguntas que has creado, las puedes observar todas en una lista
 
-<img src="delete.gif" width="130" height="250"/>
+<img src="delete.gif" width="230" height="350"/>
 
 ## License
 
